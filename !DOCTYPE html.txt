@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Caso: Airbnb</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5F5F5;
+            color: #1A237E;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 2rem;
+        }
+        .nav-bar {
+            background-color: #1A237E;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #FF5A5F;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            border-bottom: 3px solid #FF5A5F;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .list-disc-custom li {
+            margin-left: 1.5rem;
+            list-style-type: disc;
+        }
+        .foda-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .foda-item {
+            padding: 1rem;
+            border-radius: 0.75rem;
+            border: 1px solid #e5e7eb;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .foda-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        .foda-item h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .foda-item.fortalezas { border-left: 5px solid #00BCD4; }
+        .foda-item.oportunidades { border-left: 5px solid #4FC3F7; }
+        .foda-item.debilidades { border-left: 5px solid #EF4444; }
+        .foda-item.amenazas { border-left: 5px solid #DC2626; }
+        .costo-beneficio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        .text-green-success { color: #28a745; }
+        .text-red-danger { color: #dc3545; }
+        .progress-bar {
+            height: 1.5rem;
+            border-radius: 9999px;
+            transition: width 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="leading-relaxed">
+
+    <!-- Barra de Navegación -->
+    <nav class="nav-bar shadow-lg">
+        <div class="container flex justify-between items-center">
+            <h1 class="font-bold text-xl">Análisis de Airbnb</h1>
+            <div class="space-x-4">
+                <a href="#resumen" class="nav-link">Resumen</a>
+                <a href="#analisis" class="nav-link">Análisis</a>
+                <a href="#conclusion" class="nav-link">Conclusión</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-8">
+
+        <!-- Sección de Resumen Ejecutivo -->
+        <section id="resumen" class="pt-20 -mt-20">
+            <h2 class="section-title text-gray-800">Resumen Ejecutivo</h2>
+            <div class="card">
+                <p class="text-gray-700">
+                    Airbnb, fundado entre 2007 y 2008, nació como una solución informal para alquilar espacios entre particulares. Se transformó en una plataforma global que conecta a anfitriones con viajeros, ofreciendo una alternativa a los hoteles. Su propuesta de valor se basa en el alojamiento local, experiencias auténticas y escalabilidad digital. El proyecto destaca por su innovación, el uso de la tecnología para generar confianza y su rápida expansión, aunque también enfrentó retos regulatorios y de aceptación social.
+                </p>
+            </div>
+        </section>
+
+        <!-- Sección de Contexto -->
+        <section id="contexto">
+            <h2 class="section-title text-gray-800">Contexto</h2>
+            <div class="card">
+                <ul class="space-y-4 text-gray-700">
+                    <li><strong>Año de origen:</strong> 2007–2008.</li>
+                    <li><strong>Problema a resolver:</strong> Ofrecer alojamiento temporal accesible y una alternativa a los hoteles, permitiendo a las personas monetizar espacios infrautilizados.</li>
+                    <li><strong>Entorno:</strong> Creciente adopción de internet y smartphones, auge de la economía colaborativa y demanda de experiencias locales.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Sección de Objetivos -->
+        <section id="objetivos">
+            <h2 class="section-title text-gray-800">Objetivos del Proyecto</h2>
+            <div class="card">
+                <p class="text-gray-700 font-semibold mb-2">Objetivo general:</p>
+                <p class="text-gray-700 mb-4">
+                    Crear una plataforma segura y escalable para que las personas ofrezcan y reserven alojamientos privados.
+                </p>
+                <p class="text-gray-700 font-semibold mb-2">Objetivos específicos:</p>
+                <ul class="list-disc-custom text-gray-700 space-y-1">
+                    <li>Generar confianza entre anfitriones y huéspedes mediante reseñas y sistemas de pago seguros.</li>
+                    <li>Escalar la oferta en múltiples ciudades y países.</li>
+                    <li>Maximizar la retención de usuarios y optimizar la experiencia de búsqueda y reserva.</li>
+                    <li>Diversificar servicios (experiencias, seguro para anfitriones, etc.).</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Sección de Planificación y Ejecución -->
+        <section id="planificacion">
+            <h2 class="section-title text-gray-800">Planificación y Ejecución</h2>
+            <div class="card">
+                <p class="text-gray-700 mb-4">
+                    La estrategia de planificación y ejecución de Airbnb fue clave para pasar de una idea de nicho a una empresa global. Se basó en una metodología ágil centrada en el aprendizaje constante y la adaptación al mercado, lo que les permitió construir un producto que realmente resolvía una necesidad.
+                </p>
+                <ul class="space-y-4 text-gray-700">
+                    <li>
+                        <strong>Producto Mínimo Viable (MVP):</strong> El primer paso fue probar la idea con un MVP que demostrara la propuesta de valor. Se enfocaron en lo esencial: un sitio web simple que permitía a los anfitriones listar un espacio (inicialmente solo en San Francisco) y a los huéspedes reservarlo y pagar de forma segura.
+                    </li>
+                    <li>
+                        <strong>Metodología de Desarrollo y Crecimiento:</strong> Adoptaron un enfoque iterativo. Lanzaban pequeñas mejoras, recogían la retroalimentación de los usuarios y luego refinaban el producto para generar confianza y optimizar la experiencia.
+                    </li>
+                    <li>
+                        <strong>Estrategia de Recursos y Financiación:</strong> Utilizaron varias rondas de financiación para invertir en su propia tecnología y en marketing estratégico para penetrar en nuevos mercados.
+                    </li>
+                    <li>
+                        <strong>Escalamiento y Expansión Internacional:</strong> Se expandieron gradualmente a ciudades clave, adaptando la plataforma a las normativas locales.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Sección de Resultados -->
+        <section id="resultados">
+            <h2 class="section-title text-gray-800">Resultados (Síntesis)</h2>
+            <div class="card">
+                <ul class="space-y-4 text-gray-700">
+                    <li>
+                        <strong>Éxitos:</strong> La empresa experimentó un crecimiento exponencial de usuarios y alojamientos, consolidándose como una marca global. Su modelo de negocio, basado en la comisión por reserva, se probó como altamente escalable y rentable.
+                    </li>
+                    <li>
+                        <strong>Retos y Resultados Negativos:</strong> Airbnb enfrentó importantes desafíos, incluyendo el conflicto con regulaciones locales y las tensiones con la industria hotelera. Además, incidentes de seguridad y las críticas por su impacto en los mercados de vivienda generaron retos constantes en materia de reputación y operación.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Sección de Análisis -->
+        <section id="analisis" class="pt-20 -mt-20">
+            <h2 class="section-title text-gray-800">Herramientas de Análisis Aplicadas</h2>
+            <div class="card">
+                <p class="text-gray-700 mb-8">Aquí se presentan las principales herramientas de análisis aplicadas al proyecto, representadas de manera visual para una mejor comprensión.</p>
+                
+                <!-- Sección de FODA -->
+                <div class="mb-10">
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900 text-center">Análisis FODA</h3>
+                    <div class="foda-grid">
+                        <div class="foda-item fortalezas bg-green-50 shadow-sm">
+                            <h3 class="text-green-800">Fortalezas</h3>
+                            <ul class="list-disc-custom text-gray-700">
+                                <li>Modelo innovador y escalable.</li>
+                                <li>Comunidad y red de confianza.</li>
+                                <li>Plataforma tecnológica eficiente.</li>
+                            </ul>
+                        </div>
+                        <div class="foda-item oportunidades bg-blue-50 shadow-sm">
+                            <h3 class="text-blue-800">Oportunidades</h3>
+                            <ul class="list-disc-custom text-gray-700">
+                                <li>Expansión a nuevos segmentos (experiencias).</li>
+                                <li>Alianzas con turismo local.</li>
+                                <li>Crecimiento de la economía colaborativa.</li>
+                            </ul>
+                        </div>
+                        <div class="foda-item debilidades bg-yellow-50 shadow-sm">
+                            <h3 class="text-yellow-800">Debilidades</h3>
+                            <ul class="list-disc-custom text-gray-700">
+                                <li>Dependencia de regulación local.</li>
+                                <li>Problemas de control de calidad.</li>
+                            </ul>
+                        </div>
+                        <div class="foda-item amenazas bg-red-50 shadow-sm">
+                            <h3 class="text-red-800">Amenazas</h3>
+                            <ul class="list-disc-custom text-gray-700">
+                                <li>Regulación restrictiva y competencia.</li>
+                                <li>Reacciones sociales por impacto en vivienda.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Separador -->
+                <hr class="my-10 border-gray-300">
+
+                <!-- Sección de Costo-Beneficio y Riesgos -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900 text-center">Costo-Beneficio y Evaluación de Riesgos</h3>
+                    
+                    <!-- Costo-Beneficio -->
+                    <div class="costo-beneficio-grid mb-10">
+                        <!-- Beneficios -->
+                        <div>
+                            <div class="flex items-center gap-2 mb-4">
+                                <span class="text-3xl text-green-success">&#10004;</span>
+                                <h3 class="text-xl font-semibold text-green-success">Beneficios</h3>
+                            </div>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Incremento de ingresos para anfitriones y la plataforma.</li>
+                                <li>Mayor variedad para viajeros.</li>
+                                <li>Marketing boca-a-boca.</li>
+                            </ul>
+                        </div>
+                        <!-- Costos -->
+                        <div>
+                            <div class="flex items-center gap-2 mb-4">
+                                <span class="text-3xl text-red-danger">&#10006;</span>
+                                <h3 class="text-xl font-semibold text-red-danger">Costos</h3>
+                            </div>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Inversiones en plataforma y atención al cliente.</li>
+                                <li>Litigios, gastos regulatorios y de reputación.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Evaluación de Riesgos -->
+                    <div class="space-y-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">Evaluación de Riesgos</h3>
+                        <!-- Riesgo Regulatorio -->
+                        <div>
+                            <h4 class="font-semibold text-lg mb-2 text-gray-800">Riesgo Regulatorio: Alto</h4>
+                            <div class="w-full bg-red-200 rounded-full h-4">
+                                <div class="bg-red-500 h-4 rounded-full" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <!-- Riesgo Reputacional -->
+                        <div>
+                            <h4 class="font-semibold text-lg mb-2 text-gray-800">Riesgo Reputacional: Medio-Alto</h4>
+                            <div class="w-full bg-yellow-200 rounded-full h-4">
+                                <div class="bg-yellow-500 h-4 rounded-full" style="width: 65%;"></div>
+                            </div>
+                        </div>
+                        <!-- Riesgo Operativo -->
+                        <div>
+                            <h4 class="font-semibold text-lg mb-2 text-gray-800">Riesgo Operativo: Medio</h4>
+                            <div class="w-full bg-orange-200 rounded-full h-4">
+                                <div class="bg-orange-500 h-4 rounded-full" style="width: 50%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Conclusión y Referencias -->
+        <section id="conclusion" class="pt-20 -mt-20">
+            <h2 class="section-title text-gray-800">Conclusión y Referencias</h2>
+            <div class="card">
+                <h3 class="text-xl font-semibold mb-2">Conclusión</h3>
+                <p class="text-gray-700 mb-4">
+                    El proyecto de Airbnb representa un caso de estudio ejemplar sobre cómo la innovación en el modelo de negocio puede transformar una industria consolidada. Al resolver una necesidad real —la de monetizar espacios no utilizados y ofrecer una alternativa de alojamiento más auténtica—, la plataforma logró un crecimiento exponencial.
+                </p>
+                <p class="text-gray-700 mb-4">
+                    El análisis demostró que el éxito del proyecto también trajo consigo importantes desafíos. La dependencia de las regulaciones locales, los riesgos operacionales y los problemas de reputación son factores críticos que la empresa ha tenido que aprender a mitigar.
+                </p>
+                <p class="text-gray-700">
+                    En síntesis, el proyecto de Airbnb valida la teoría de que un modelo de negocio innovador, si se ejecuta con un enfoque claro en la escalabilidad, la gestión de la confianza y la adaptación al mercado, puede generar un beneficio neto positivo a largo plazo, incluso frente a grandes riesgos. La principal lección es que la disrupción no se trata solo de la idea, sino de la capacidad para evolucionar y mitigar los problemas a medida que surgen.
+                </p>
+                <br>
+                <h3 class="text-xl font-semibold mb-2">Referencias (Formato APA)</h3>
+                <ul class="list-disc-custom text-gray-700 space-y-1">
+                    <li>Chesbrough, H. (2003). *Open innovation: The new imperative for creating and profiting from technology*. Harvard Business School Press.</li>
+                    <li>Sundararajan, A. (2016). The sharing economy: A primer for managers. *California Management Review*, 58(4), 5-22.</li>
+                    <li>Airbnb. (2023). *Acerca de Airbnb*. Recuperado de https://www.airbnb.mx/about/</li>
+                    <li>Buscaglia, P. (2018). *Entrevista personal sobre la historia de Airbnb*. [Comunicación personal].</li>
+                    <li>Statista. (2022). *Revenue of Airbnb from 2012 to 2021*. Recuperado de https://www.statista.com/statistics/444222/airbnbs-annual-revenue/</li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
